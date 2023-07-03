@@ -1,11 +1,10 @@
 import { DeckModel, UserModel } from '../models/index.js';
-import { YgoApi } from '../service/index.js';
+import { YgoApi } from './index.js';
 
 export const DeckService = {
-    getUserDeck: async ({userId, _id}) => {
-        userId = _id ?? userId;
+    getUserDeck: async ({userId}) => {
         let deck = await DeckModel.findOne({userId});
-        if (!deck && !_id) {
+        if (!deck) {
             return DeckModel({userId, cards: []}).save();
         }
         deck = deck._doc;

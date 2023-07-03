@@ -24,10 +24,9 @@ export const deckController = {
      */
     getDeck: async (req, res, next) => {
         try {
-            const { query: { userId, deckId } } = req;
+            const { query: { userId } } = req;
             const options = {
                 userId,
-                _id: deckId
             };
             const deck = await DeckService.getUserDeck(options);
             res.status(constants.HTTP_STATUS_OK).json(deck);
