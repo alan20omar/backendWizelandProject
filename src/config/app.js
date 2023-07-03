@@ -2,7 +2,7 @@ import express from "express";
 import cors from 'cors';
 import { fileURLToPath } from 'url';
 
-import { cardsRouter, deckRouter, userRouter } from '../routes/index.js';
+import { cardsRouter, deckRouter, favoriteRouter, userRouter } from '../routes/index.js';
 import { dbConnection, handlerError } from '../middlewares/index.js';
 
 import path from 'path';
@@ -17,9 +17,10 @@ app.use(express.static(path.join(fileURLToPath(import.meta.url).split('config/')
 // DB
 app.use(dbConnection);
 // Routes
-cardsRouter(app)
-userRouter(app)
-deckRouter(app)
+cardsRouter(app);
+userRouter(app);
+deckRouter(app);
+favoriteRouter(app);
 
 app.use(handlerError);
 

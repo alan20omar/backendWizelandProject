@@ -40,7 +40,7 @@ export const DeckService = {
                     return deck.cards.map(cardId => res.data.find(({id}) => id === cardId))
                 });
             }
-            console.log(deck)
+            // console.log(deck)
             return deck;
         })).then(res => res.filter(deck => deck.cards.length));
     },
